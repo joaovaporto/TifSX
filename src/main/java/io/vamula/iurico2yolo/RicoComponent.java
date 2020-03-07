@@ -1,13 +1,9 @@
 package io.vamula.iurico2yolo;
 
-import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
 
 import org.json.simple.JSONArray; 
-import org.json.simple.JSONObject; 
-import org.json.simple.parser.*;
+import org.json.simple.JSONObject;
 
 public class RicoComponent {
 	private String type;

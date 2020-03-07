@@ -16,7 +16,7 @@ public class Iurico2Iuyolo {
 			yoloFile.writeFile(args[1]);
 			System.out.println("Awesome! Everything is ready.");
 		} catch (Exception e) {
-			System.err.println("Something seems be wrong, check the stack:");
+			System.err.println("Conversion failed. Something seems be wrong:");
 			System.err.println(e.getMessage());
 		}
 	}

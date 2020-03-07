@@ -1,7 +1,11 @@
 package io.vamula.iurico2yolo;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 public class YoloFile {
@@ -18,9 +22,20 @@ public class YoloFile {
 	}
 
 	public void writeFile(String fileAddr) throws IOException {
-		FileWriter file = new FileWriter(fileAddr);
+		File file = new File(fileAddr);
+		FileOutputStream fos = new FileOutputStream(file);
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
 		
-		file.close();
-		// TODO
+		for (YoloComponent yoloComponent : yoloComponents) {
+			bw.write(yoloComponent.getLabelId() +
+					" " + yoloComponent.getX_center() +
+					" " + yoloComponent.getY_center() +
+					" " + yoloComponent.getHeight() +
+					" " + yoloComponent.getHeight());
+			
+			bw.newLine();
+		}
+		
+		bw.close();
 	}
 }

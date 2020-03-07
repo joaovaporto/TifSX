@@ -13,10 +13,9 @@ public class RicoFile {
 
 	public RicoFile(String addrFile) throws IOException, ParseException {
 		FileReader file = new FileReader(addrFile);
-		Object obj = new JSONParser().parse(file);
-		JSONObject jo = (JSONObject) obj;
+		JSONObject ricoJSON = (JSONObject) new JSONParser().parse(file);
 		
-		ricoComponents = RicoComponent.getRicoComponents(jo);
+		ricoComponents = RicoComponent.getRicoComponents(ricoJSON);
 		
 		file.close();
 	}

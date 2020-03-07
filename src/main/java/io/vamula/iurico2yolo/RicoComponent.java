@@ -20,42 +20,37 @@ public class RicoComponent {
 		this.bounds = bounds;
 	}
 
-	public static ArrayList<RicoComponent> getRicoComponents(JSONObject jo) {
+	public static ArrayList<RicoComponent> getRicoComponents(JSONObject ricoJSON) {
 		ArrayList<RicoComponent> ricoComponents = new ArrayList<RicoComponent>();
-
-//		int bounds[] = {100, 100, 200, 200};
-//		ricoComponents.add(new RicoComponent("general", "Image", bounds));
-//		ricoComponents.add(new RicoComponent("icon", "retry", bounds));
-//		ricoComponents.add(new RicoComponent("text-button", "volume", bounds));
+		getRicoComponentsRecursive(ricoJSON, ricoComponents);
 		
-		getRicoComponentsRecursive(jo, ricoComponents);		
 		return ricoComponents;
 	}
 	
-	private static void getRicoComponentsRecursive(JSONObject jo, ArrayList<RicoComponent> ricoComponents) {
-		if (jo.get("componentLabel") != null) {
-			String componentLabel = (String) jo.get("componentLabel");
-			String type = "general";
-			long bounds[] = new long[4];
+	private static void getRicoComponentsRecursive(JSONObject ricoComponent, ArrayList<RicoComponent> ricoComponents) {
+		if (ricoComponent.get("componentLabel") != null) {
+			String componentLabel = (String) ricoComponent.get("componentLabel");
+			String componentType = "general";
+			long componentBounds[] = new long[4];
 			
 			if (componentLabel.equals("Icon")) {
-				type = componentLabel;
-				componentLabel = (String) jo.get("iconClass");
+				componentType = componentLabel;
+				componentLabel = (String) ricoComponent.get("iconClass");
 			} else if (componentLabel.equals("Text Button")) {
-				type = componentLabel;
-				componentLabel = (String) jo.get("textButtonClass");
+				componentType = componentLabel;
+				componentLabel = (String) ricoComponent.get("textButtonClass");
 			}
 			
-			JSONArray ja = (JSONArray) jo.get("bounds");
+			JSONArray bounds = (JSONArray) ricoComponent.get("bounds");
 			
-			for (int i = 0; i < bounds.length; i++)
-				bounds[i] = (long) ja.get(i);
+			for (int i = 0; i < componentBounds.length; i++)
+				componentBounds[i] = (long) bounds.get(i);
 			
-			ricoComponents.add(new RicoComponent(type, componentLabel, bounds));
+			ricoComponents.add(new RicoComponent(componentType, componentLabel, componentBounds));
 		}
 		
-		if (jo.get("children") != null) {
-			JSONArray ja = (JSONArray) jo.get("children");
+		if (ricoComponent.get("children") != null) {
+			JSONArray ja = (JSONArray) ricoComponent.get("children");
 		
 			for (Object child : ja)
 				getRicoComponentsRecursive((JSONObject) child, ricoComponents);

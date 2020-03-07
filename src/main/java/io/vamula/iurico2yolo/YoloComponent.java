@@ -16,7 +16,7 @@ public class YoloComponent {
 		rico2yoloComponentBounds(ricoComponent.getBounds());	
 	}
 
-	private void rico2yoloComponentBounds(int[] ricoComponentBounds) {
+	private void rico2yoloComponentBounds(long[] ricoComponentBounds) {
 		float rateConXAxis = (float) 1440/448;
 		float rateConYAxis = (float) 2560/448;
 		float boundsIu448x448[] = new float[4];

@@ -12,9 +12,9 @@ import org.json.simple.parser.*;
 public class RicoComponent {
 	private String type;
 	private String label;
-	private int[] bounds;
+	private long[] bounds;
 
-	public RicoComponent(String type, String label, int[] bounds) {
+	public RicoComponent(String type, String label, long[] bounds) {
 		this.type = type;
 		this.label = label;
 		this.bounds = bounds;
@@ -36,7 +36,7 @@ public class RicoComponent {
 		if (jo.get("componentLabel") != null) {
 			String componentLabel = (String) jo.get("componentLabel");
 			String type = "general";
-			int bounds[] = new int[4];
+			long bounds[] = new long[4];
 			
 			if (componentLabel.equals("Icon")) {
 				type = componentLabel;
@@ -47,22 +47,18 @@ public class RicoComponent {
 			}
 			
 			JSONArray ja = (JSONArray) jo.get("bounds");
-			Iterator<?> itr = ja.iterator();
 			
 			for (int i = 0; i < bounds.length; i++)
-				bounds[i] = (int) itr.next();
+				bounds[i] = (long) ja.get(i);
 			
 			ricoComponents.add(new RicoComponent(type, componentLabel, bounds));
 		}
 		
 		if (jo.get("children") != null) {
-			JSONArray ja = (JSONArray) jo.get("bounds");
-			Iterator<?> itr = ja.iterator();
-			
-			while(itr.hasNext()) {
-				Map.Entry pair = itr.next();
-				getRicoComponentsRecursive((JSONObject) pair.getValue(), ricoComponents);
-			}
+			JSONArray ja = (JSONArray) jo.get("children");
+		
+			for (Object child : ja)
+				getRicoComponentsRecursive((JSONObject) child, ricoComponents);
 				
 		}
 	}
@@ -75,7 +71,7 @@ public class RicoComponent {
 		return label;
 	}
 
-	public int[] getBounds() {
+	public long[] getBounds() {
 		return bounds;
 	}
 }

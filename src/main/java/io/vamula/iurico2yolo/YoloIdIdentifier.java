@@ -18,12 +18,12 @@ public class YoloIdIdentifier {
 		case "Button Bar": return 3;
 		case "Card": return 4;
 		case "Checkbox": return 5;
-		case "Drawer (Parent)": return 6;
+		case "Drawer": return 6;
 		case "Date Picker": return 7;
 		case "Image": return 8;
 		case "Image Button": return 9;
 		case "Input": return 10;
-		case "List Item (Parent)": return 11;
+		case "List Item": return 11;
 		case "Map View": return 12;
 		case "Multi-Tab": return 13;
 		case "Number Stepper": return 14;
@@ -72,6 +72,36 @@ public class YoloIdIdentifier {
 		case "buy" : return 48;
 		case "update" : return 49;
 		case "edit" : return 50;
+		case "delivery" : return 134;
+		case "preview" : return 135;
+		case "enter" : return 136;
+		case "privacy policy" : return 137;
+		case "favorites" : return 138;
+		case "change" : return 139;
+		case "history" : return 140;
+		case "play" : return 141;
+		case "home" : return 142;
+		case "map" : return 143;
+		case "menu" : return 144;
+		case "register" : return 145;
+		case "random" : return 146;
+		case "just once" : return 147;
+		case "close" : return 148;
+		case "about" : return 149;
+		case "install" : return 150;
+		case "email" : return 151;
+		case "categories" : return 152;
+		case "download" : return 153;
+		case "united_states" : return 154;
+		case "today" : return 155;
+		case "terms of use" : return 156;
+		case "default" : return 157;
+		case "notifications" : return 158;
+		case "popular" : return 159;
+		case "google" : return 160;
+		case "nearby" : return 161;
+		case "music" : return 162;
+		case "help" : return 163;
 		default: throw new RuntimeException("Undefined component \'" + ricoComponent.getLabel() + "\' of type \'" + ricoComponent.getType() + "\'");
 		}
 	}
@@ -147,8 +177,8 @@ public class YoloIdIdentifier {
 		case "weather": return 117;
 		case "build": return 118;
 		case "dashboard": return 119;
-		case "expand less": return 120;
-		case "thumbs down": return 121;
+		case "expand_less": return 120;
+		case "thumbs_down": return 121;
 		case "dialpad": return 122;
 		case "music": return 123;
 		case "redo": return 124;
@@ -158,6 +188,16 @@ public class YoloIdIdentifier {
 		case "videocam": return 128;
 		case "label": return 129;
 		case "arrow_backward": return 130;
+		case "skip_next": return 164;
+		case "date_range": return 165;
+		case "launch": return 166;
+		case "compare": return 167;
+		case "copy": return 168;
+		case "network_wifi": return 169;
+		case "description": return 170;
+		case "location_crosshair": return 171;
+		case "repeat": return 172;
+		case "national_flag": return 173;
 		default: throw new RuntimeException("Undefined component \'" + ricoComponent.getLabel() + "\' of type \'" + ricoComponent.getType() + "\'");
 		}
 	}

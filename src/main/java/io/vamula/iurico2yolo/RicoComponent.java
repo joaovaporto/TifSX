@@ -11,6 +11,13 @@ public class RicoComponent {
 	private long[] bounds;
 
 	public RicoComponent(String type, String label, long[] bounds) {
+		if (type == null)
+			throw new RuntimeException("Component rico type defined as null");
+		else if (label == null)
+			throw new RuntimeException("Component rico label defined as null");
+		else if (bounds == null)
+			throw new RuntimeException("Component rico bounds defined as null");
+		
 		this.type = type;
 		this.label = label;
 		this.bounds = bounds;

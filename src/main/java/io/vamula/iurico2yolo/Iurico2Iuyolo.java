@@ -6,14 +6,14 @@ import java.io.IOException;
 import org.json.simple.parser.ParseException;
 
 public class Iurico2Iuyolo {
-	public static void main(String args[]) throws IOException {
+	public static void main(String args[]) throws IOException, ParseException {
 		if (args.length != 2 && (args.length != 3 || !args[0].equals("-s"))) {
 			System.out.println("For just one file conv: iurico2iuyolo <file-iurico-address> <file-iuyolo-address>");
 			System.out.println("For several files conv: iurico2iuyolo -s <dir-iurico-address> <dir-iuyolo-address>");
 			System.exit(0);
 		}
 		
-		try {			
+		try {	
 			if (args.length == 2) {
 				iurico2iuyolo(args[0], args[1]);
 			} else {
@@ -30,7 +30,12 @@ public class Iurico2Iuyolo {
 							addrRicoFile.lastIndexOf(".json"));
 					addrYoloFile = args[2] + File.separator + addrYoloFile + ".txt";
 					
-					iurico2iuyolo(addrRicoFile, addrYoloFile);
+					try {
+						iurico2iuyolo(addrRicoFile, addrYoloFile);
+					} catch (Exception e) {
+						System.err.println("Conversion failed for file \'" + addrRicoFile + "\':");
+						System.err.println(e.getMessage());
+					}
 				}				
 			}
 			

@@ -17,8 +17,10 @@ public class YoloComponent {
 	}
 
 	private void rico2yoloComponentBounds(long[] ricoComponentBounds) {
-		float rateConXAxis = (float) 1440/448;
-		float rateConYAxis = (float) 2560/448;
+		float iuYoloWidth = 448;
+		float iuYoloHeight = 448;
+		float rateConXAxis = (float) 1440/iuYoloWidth;
+		float rateConYAxis = (float) 2560/iuYoloHeight;
 		float boundsIu448x448[] = new float[4];
 		
 		boundsIu448x448[0] = ricoComponentBounds[0]/rateConXAxis;
@@ -26,10 +28,10 @@ public class YoloComponent {
 		boundsIu448x448[2] = ricoComponentBounds[2]/rateConXAxis;
 		boundsIu448x448[3] = ricoComponentBounds[3]/rateConYAxis;
 		
-		x_center = (((boundsIu448x448[2] - boundsIu448x448[0])/2) + boundsIu448x448[0])/448;
-		y_center = (((boundsIu448x448[3] - boundsIu448x448[1])/2) + boundsIu448x448[1])/448;
-		width = (float) boundsIu448x448[2] - boundsIu448x448[0];
-		height = (float) boundsIu448x448[3] - boundsIu448x448[1];
+		x_center = (((boundsIu448x448[2] - boundsIu448x448[0])/2) + boundsIu448x448[0])/iuYoloWidth;
+		y_center = (((boundsIu448x448[3] - boundsIu448x448[1])/2) + boundsIu448x448[1])/iuYoloHeight;
+		width = ((float) boundsIu448x448[2] - boundsIu448x448[0])/iuYoloWidth;
+		height = ((float) boundsIu448x448[3] - boundsIu448x448[1])/iuYoloHeight;
 	}
 	
 	public int getLabelId() {

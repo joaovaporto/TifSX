@@ -26,7 +26,7 @@ public class RicoComponent {
 	private static void getRicoComponentsRecursive(JSONObject ricoComponent, ArrayList<RicoComponent> ricoComponents) {
 		if (ricoComponent.get("componentLabel") != null) {
 			String componentLabel = (String) ricoComponent.get("componentLabel");
-			String componentType = "general";
+			String componentType = "General";
 			long componentBounds[] = new long[4];
 			
 			if (componentLabel.equals("Icon")) {

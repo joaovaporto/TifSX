@@ -22,7 +22,10 @@ public class Iurico2Iuyolo {
 				if (ricoFiles == null) throw new RuntimeException("Dir iurico is empty or actually is not a dir.");
 				
 				for (File ricoFile : ricoFiles) {
-					String addrRicoFile = ricoFile.getAbsolutePath();					
+					String addrRicoFile = ricoFile.getAbsolutePath();
+					
+					if (!addrRicoFile.contains(".json")) continue;
+					
 					String addrYoloFile = addrRicoFile.substring(addrRicoFile.lastIndexOf(File.separator),
 							addrRicoFile.lastIndexOf(".json"));
 					addrYoloFile = args[2] + File.separator + addrYoloFile + ".txt";

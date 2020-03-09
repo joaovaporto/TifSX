@@ -3,9 +3,9 @@ package io.vamula.iurico2yolo;
 public class YoloIdIdentifier {
 	public static int getId(RicoComponent ricoComponent) {
 		switch (ricoComponent.getType()) {
-		case "general": return getGeneralId(ricoComponent);
-		case "icon": return getIconId(ricoComponent);
-		case "text-button": return getTextButtonId(ricoComponent);
+		case "General": return getGeneralId(ricoComponent);
+		case "Icon": return getIconId(ricoComponent);
+		case "Text Button": return getTextButtonId(ricoComponent);
 		default: throw new RuntimeException("Undefined component type \'" + ricoComponent.getType() + "\'");
 		}
 	}
@@ -35,11 +35,14 @@ public class YoloIdIdentifier {
 		case "Toolbar": return 20;
 		case "Video": return 21;
 		case "Web View": return 22;
-		default: throw new RuntimeException("Undefined component \'" + ricoComponent.getLabel() + "\'");
+		case "Text": return 131;
+		case "Icon": return 132;
+		case "Modal": return 133;
+		default: throw new RuntimeException("Undefined component \'" + ricoComponent.getLabel() + "\' of type \'" + ricoComponent.getType() + "\'");
 		}
 	}
 	
-	private static int getIconId(RicoComponent ricoComponent) {
+	private static int getTextButtonId(RicoComponent ricoComponent) {
 		switch (ricoComponent.getLabel()) {
 		case "no" : return 23;
 		case "login" : return 24;
@@ -69,11 +72,11 @@ public class YoloIdIdentifier {
 		case "buy" : return 48;
 		case "update" : return 49;
 		case "edit" : return 50;
-		default: throw new RuntimeException("Undefined component \'" + ricoComponent.getLabel() + "\'");
+		default: throw new RuntimeException("Undefined component \'" + ricoComponent.getLabel() + "\' of type \'" + ricoComponent.getType() + "\'");
 		}
 	}
 	
-	private static int getTextButtonId(RicoComponent ricoComponent) {
+	private static int getIconId(RicoComponent ricoComponent) {
 		switch (ricoComponent.getLabel()) {
 		case "more": return 51;
 		case "close": return 52;
@@ -155,7 +158,7 @@ public class YoloIdIdentifier {
 		case "videocam": return 128;
 		case "label": return 129;
 		case "arrow_backward": return 130;
-		default: throw new RuntimeException("Undefined component \'" + ricoComponent.getLabel() + "\'");
+		default: throw new RuntimeException("Undefined component \'" + ricoComponent.getLabel() + "\' of type \'" + ricoComponent.getType() + "\'");
 		}
 	}
 }
